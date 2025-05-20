@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pangpam/static/css/main.a5dcb56e.css",
+    "main.js": "/pangpam/static/js/main.b6c35a74.js",
+    "static/js/453.49e3047b.chunk.js": "/pangpam/static/js/453.49e3047b.chunk.js",
+    "index.html": "/pangpam/index.html",
+    "main.a5dcb56e.css.map": "/pangpam/static/css/main.a5dcb56e.css.map",
+    "main.b6c35a74.js.map": "/pangpam/static/js/main.b6c35a74.js.map",
+    "453.49e3047b.chunk.js.map": "/pangpam/static/js/453.49e3047b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5dcb56e.css",
+    "static/js/main.b6c35a74.js"
+  ]
+}
