@@ -1,0 +1,19 @@
+.viewer-container {
+    width: 978px;
+    height: 506px;
+    border: 1px solid #aaa;
+    position: relative;
+    border-radius: 23px;
+    overflow: hidden;
+}
+.icon-warpper{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    color: white;
+    padding: 30px;
+    display: flex;
+}
+.icon-warpper div{
+    padding: 0 30px;
+}

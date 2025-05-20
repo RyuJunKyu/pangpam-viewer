@@ -1,0 +1,22 @@
+.service-wrapper{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    max-width: 1291px;
+    margin: 0 auto;
+    padding: 60px 0;
+    justify-content: space-between;
+}
+.service-pamphlet{
+    color: white;
+    position: relative;
+    height: 506px;
+    border-radius: 22px;
+    background-color: #fff;
+    width: 282px;
+}
+.parent{
+    position: relative;
+    display: inline-block;
+}
