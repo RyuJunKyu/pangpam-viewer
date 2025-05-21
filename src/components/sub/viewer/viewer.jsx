@@ -1,16 +1,45 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import style from './viewer.module.css';
+import ViewerHome from './home/ViewerHome';
+import ViewerColor from './color/ViewerColor';
+import ViewerSearch from './search/ViewerSearch';
 
-export default function Viewer() {
+export default function Viewer( props ) {
   const containerRef = useRef(null);
   const [sceneColor, setSceneColor] = useState('#000')
-      const scene = new THREE.Scene();
-      useEffect(()=>{
-      scene.background = new THREE.Color(Math.random() * 0xffffff); // 랜덤색
-        console.log(scene)
-      },[sceneColor])
+  const [isHome, setHome] = useState(false)
+  const [isColor,setColor] = useState(false);
+  const [isSearch,setSearch] = useState(false)
+  const [isModel,setModel] = useState(null)
+  const sceneRef = useRef(new THREE.Scene());
+  const modelRef = useRef(null);
+  const handleChildEvent = (home, model) => {
+    setHome(home);
+    setModel(model)
+  }
+  const handleColorEvent = (color) => {
+    setColor(color)
+  }
+  const handleSearchEvent = (search) =>{
+    setSearch(search)
+  }
+  useEffect(()=>{
+    const scene = sceneRef.current;
+    console.log(scene)
+    const oldModel = scene.getObjectByName('model');
+    if(oldModel) scene.remove(oldModel)
+    const cube = new THREE.Mesh(
+          new THREE.BoxGeometry(),
+          new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff })
+        );
+      cube.name = 'model'; // ✅ 이름 설정!
+      modelRef.current = cube
+      scene.add(modelRef.current);
+  console.log("모델 업데이트 후 scene:", scene);
+  },[isModel])
   useEffect(() => {
+    const scene = sceneRef.current
     const container = containerRef.current;
     if (!container) return;
 
@@ -33,20 +62,28 @@ export default function Viewer() {
     const light = new THREE.AmbientLight(color, intensity);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(width, height);
+    renderer.autoClear = true
     container.appendChild(renderer.domElement);
-
+    if(modelRef.current === null){
     const cube = new THREE.Mesh(
-      new THREE.BoxGeometry(),
-      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+        new THREE.BoxGeometry(),
+        new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff })
     );
-    scene.background = new THREE.Color(sceneColor);
-    scene.add(cube);
+    cube.name = 'model';
+    modelRef.current = cube
+    scene.add(modelRef.current);
+    }
+    
     scene.add(light);
+    scene.background = new THREE.Color(sceneColor);
     const animate = () => {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      if(modelRef.current !== null){
+        modelRef.current.rotation.y += 0.01;
+      }
+      renderer.clear(); // optional, 특히 post-processing 있을 때
       renderer.render(scene, camera);
+      
+      requestAnimationFrame(animate);
     };
 
     animate();
@@ -58,18 +95,23 @@ export default function Viewer() {
     };
   }, []);
   const onClickChangeColor = () => {
-    scene.background = new THREE.Color(Math.random() * 0xffffff); // 랜덤색
+    sceneRef.current.background = new THREE.Color(Math.random() * 0xffffff); // 랜덤색
   }
   return (
-  <div ref={containerRef} className={style['viewer-container']} >
-    <div className={style['icon-warpper']}>
-      <div onClick={onClickChangeColor}>홈</div>
-      <div>회전</div>
-      <div>색생</div>
-      <div>보기</div>
-      <div>정보</div>
-      <div>지도</div>
+  <>
+    <div ref={containerRef} className={style['viewer-container']} >
+      {isHome && <ViewerHome props={handleChildEvent} />}  
+      {isColor && <ViewerColor props={handleColorEvent} />}
+      {isSearch && <ViewerSearch props={handleSearchEvent} />}
+      <div className={style['icon-warpper']}>
+        <div onClick={() => setHome(true)}>홈</div>
+        <div>회전</div>
+        <div onClick={() => setColor(true)}>색상</div>
+        <div>보기</div>
+        <div>정보</div>
+        <div onClick={() => setSearch(true)}>지도</div>
+      </div>
     </div>
-  </div>
+  </>
   );
 }

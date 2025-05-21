@@ -1,0 +1,28 @@
+.pamplat{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    max-width: 1291px;
+    margin: 0 auto;
+    padding: 60px 0;
+    justify-content: space-between;
+    /* background-color: #fff; */
+}
+.pamplat-content {
+    position: relative;
+    width: 300px;
+    min-width: 300px;
+    min-height: 500px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* 하단 정렬 */
+}
+.pamplat .content{
+    height: 60px;
+    background: linear-gradient(0deg, hsla(0, 0%, 8%, .57), hsla(0, 0%, 8%, .36) 60%, hsla(0, 0%, 8%, 0));
+    padding: 20px;
+    line-height: 2;
+    color: #eee;
+}

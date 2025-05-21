@@ -1,0 +1,19 @@
+.viewColor{
+    position: absolute;
+    z-index: 10;
+    background-color: #1e1e1e;
+    top: 90px;
+    left: 100px;
+    padding: 20px;
+}
+.viewColor-header{
+    display: flex;
+    justify-content: flex-end;
+}
+.xmark{
+    color: #ffffff;
+    cursor: pointer;
+}
+.color-picker{
+    margin-top: 20px;
+}
