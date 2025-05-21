@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pangpam/static/css/main.a5dcb56e.css",
-    "main.js": "/pangpam/static/js/main.b6c35a74.js",
-    "static/js/453.49e3047b.chunk.js": "/pangpam/static/js/453.49e3047b.chunk.js",
+    "main.css": "/pangpam/static/css/main.90fa9c19.css",
+    "main.js": "/pangpam/static/js/main.44741355.js",
+    "static/js/453.643da1a8.chunk.js": "/pangpam/static/js/453.643da1a8.chunk.js",
     "index.html": "/pangpam/index.html",
-    "main.a5dcb56e.css.map": "/pangpam/static/css/main.a5dcb56e.css.map",
-    "main.b6c35a74.js.map": "/pangpam/static/js/main.b6c35a74.js.map",
-    "453.49e3047b.chunk.js.map": "/pangpam/static/js/453.49e3047b.chunk.js.map"
+    "main.90fa9c19.css.map": "/pangpam/static/css/main.90fa9c19.css.map",
+    "main.44741355.js.map": "/pangpam/static/js/main.44741355.js.map",
+    "453.643da1a8.chunk.js.map": "/pangpam/static/js/453.643da1a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5dcb56e.css",
-    "static/js/main.b6c35a74.js"
+    "static/css/main.90fa9c19.css",
+    "static/js/main.44741355.js"
   ]
 }
